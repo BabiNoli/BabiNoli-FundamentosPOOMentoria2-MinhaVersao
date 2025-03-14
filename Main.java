@@ -3,7 +3,10 @@ package one.digitalinnivation;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import one.digitalinnivation.dominio.Bootcamp;
 import one.digitalinnivation.dominio.Conteudo;
 import one.digitalinnivation.dominio.Curso;
@@ -54,7 +57,7 @@ public class Main {
 		System.out.println("\n-----------\n");
 		
 		felipe.inscrever(bootcamp);
-		//felipe.progredir();
+		felipe.progredir();
 		System.out.println("XP: " + felipe.calcularTotalXp());
 		System.out.println("\n-----------\n");
 		
@@ -70,7 +73,7 @@ public class Main {
 		marina.setNome("Marina");
 		
 		marina.inscrever(cursoJava);
-		//marina.progredir();
+		marina.progredir();
 		marina.inscrever(cursoJavaAvancado);
 		marina.progredir();
 		System.out.println("XP: " + marina.calcularTotalXp());
@@ -100,7 +103,13 @@ public class Main {
 		    System.out.println("O jogador com mais XP é: " + topDev.getNome() + " com " + topDev.calcularTotalXp() + " XP.");
 		}
 
+		//alternativa:
+		List<Dev> devsSort = Arrays.asList(felipe, jonas, marina).stream()
+				.sorted(Comparator.comparing(Dev::calcularTotalXp).reversed()).collect(Collectors.toList());
 
+		for (Dev dev : devsSort) {
+		    System.out.println(dev.getNome() + " - XP: " + dev.calcularTotalXp());
+		}
 		
 	}
 
