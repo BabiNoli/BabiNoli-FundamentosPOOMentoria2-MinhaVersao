@@ -103,7 +103,7 @@ public class Main {
 		    System.out.println("O jogador com mais XP é: " + topDev.getNome() + " com " + topDev.calcularTotalXp() + " XP.");
 		}
 
-		//alternativa:
+		//alternativa: ordena a lista de devs pelo XP e imprime em ordem decrescente
 		List<Dev> devsSort = Arrays.asList(felipe, jonas, marina).stream()
 				.sorted(Comparator.comparing(Dev::calcularTotalXp).reversed()).collect(Collectors.toList());
 
